@@ -7,6 +7,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@300;400&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/style.css">
     </head>
@@ -23,15 +25,23 @@
       <div id="app" class="container">
 
         <div class="searchbar">
+          <h1>BOOLFLIX</h1>
           <input v-model='movie' name="search"  @keyup.enter='search' value="">
           <button type="button" @click='search'>Search</button>
         </div>
 
-        <div class="movie-container" v-for='movie in movieList'>
-          <h2>{{movie.title}}</h2> <!-- Titolo-->
-          <h3>{{movie.original_title}}</h3> <!-- Titolo Originale-->
-          <span class="language">{{movie.original_language}}</span> <!-- Lingua-->
-          <span class="vote">{{movie.vote_average}}</span> <!-- Voto-->
+        <div class="contain">
+
+          <div class="movie-container" v-for='movie in movieList'>
+            <h2>{{movie.title}}</h2> <!-- Titolo-->
+            <h3>{{movie.original_title}}</h3> <!-- Titolo Originale-->
+            <span class="language">{{movie.original_language}}</span> <!-- Lingua-->
+             <!-- Voto-->
+            <span >
+              <i class="fa fa-star" v-for='index in vote(movie.vote_average)'></i>
+              <i class="fa fa-star-o" v-for='index in (5 - vote(movie.vote_average))'></i>
+            </span>
+          </div>
         </div>
         
 

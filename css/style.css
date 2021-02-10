@@ -7,6 +7,13 @@
 .container{
   margin: 0 auto;
   width: 1200px;
+  height: auto;
+ 
+}
+
+.searchbar h1{
+  color: red;
+  display: inline-block;
 }
 
 .searchbar{
@@ -14,16 +21,23 @@
 }
 
 .movie-container{
-  width: 200px;
-  height: 400px;
+  width: 150px;
+  height: 300px;
   border: 1px solid black;
-  margin-top: 15px;
-  margin-left: 25;
-  display: inline-block;
+  margin: 15px;
+  background-color: dimgray;
+}
+
+.contain{
+  display: flex;
+  flex-wrap: wrap;
 }
 
 h2, h3 , .language ,
 .vote{
-  color: red;
   font-size: 20px;
+}
+
+span  .fa-star{
+  color: rgb(177, 177, 9);
 }
