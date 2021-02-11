@@ -25,22 +25,23 @@
       <div id="app" class="container">
 
         <div class="searchbar">
-          <h1>BOOLFLIX</h1>
+          <img src="https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="">
           <input v-model='movie' name="search"  @keyup.enter='search' value="">
           <button type="button" @click='search'>Search</button>
         </div>
 
         <div class="contain">
 
-          <div class="movie-container" v-for='movie in movieList'>
+          <div class="movie-container" v-for='movie in resultLauncher'>
+            <!-- <span class="poster_image" style="background-image: url('http://image.tmdb.org/t/p/w500/'+ movie.poster_path)"></span> -->
+            <img class="poster_image" :src="'http://image.tmdb.org/t/p/w500/'+ movie.poster_path" alt="">
             <h2>{{movie.title}}</h2> <!-- Titolo-->
-            <h3>{{movie.original_title}}</h3> <!-- Titolo Originale-->
-            <span class="language">{{movie.original_language}}</span> <!-- Lingua-->
-             <!-- Voto-->
-            <span >
-              <i class="fa fa-star" v-for='index in vote(movie.vote_average)'></i>
+            <h3>{{movie.original_title}} {{movie.original_name}}</h3> <!-- Titolo Originale-->
+            <span>  <!-- Voto-->
+              <i class="fa fa-star" v-for='index in vote(movie.vote_average)'></i> 
               <i class="fa fa-star-o" v-for='index in (5 - vote(movie.vote_average))'></i>
             </span>
+            <img class="flag" :src="'./img/' + movie.original_language + '.svg'" alt="">
           </div>
         </div>
         

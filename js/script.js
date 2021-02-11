@@ -2,24 +2,51 @@ new Vue({
   el: '#app',
   data:{
     movie: '',
-     movieList:[
-
-    ],
-    flagList:[
-
-    ]
+     resultLauncher:[
+       
+     ],
+     movieList: [],
+     showTvList:[]
   },
   methods:{
-    search: function () {
-      const self = this;
+    search () {
+      this.resultLauncher = [];
+     this.searchMovie();
+     this.searchShowTv();
+    },
+
+    searchMovie() {  
       
-      axios.get('https://api.themoviedb.org/3/search/movie?api_key=883ce966ab68df0a28febc7e02e61163&language=it IT&query=' + this.movie)
-      
+      axios
+      .get('https://api.themoviedb.org/3/search/movie',{ 
+        params:{
+          api_key:'883ce966ab68df0a28febc7e02e61163',
+          query: this.movie,
+          language: 'it_IT',
+        }
+      }) 
       .then((resp) => {
-          const film = resp.data.results;
+        this.movieList = resp.data.results;
+        console.log(resp.data.results);
+        this.resultLauncher = [...this.movieList, ...this.resultLauncher]
+        }) 
+    },
+    searchShowTv() {
+      
+      axios
+      .get('https://api.themoviedb.org/3/search/tv', {  
+        params: {   
+          api_key: '883ce966ab68df0a28febc7e02e61163',
+          query: this.movie,
+          language: 'it_IT',
+        }
+      })
+
+      .then((resp) => {
+          this.showTvList = resp.data.results;
           console.log(resp.data.results);
-          self.movieList = film;
-        });
+          this.resultLauncher = [...this.showTvList, ...this.resultLauncher]
+      })
     },
     vote:(vote) => {
       return parseInt(vote / 2)
