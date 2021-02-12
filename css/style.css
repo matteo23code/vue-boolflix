@@ -2,29 +2,42 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background:black;
+  background: black;
+  color: floralwhite;
 }
 
 .container{
-  max-width:max-content;
+  max-width:;
   height: auto;
- 
 }
 
-.searchbar img{
+.nav-logo img{
   width: 100px;
+  margin: 15px;
+}
+
+.nav-center-filter{
+  border: 1px solid #fff;
+  width: 300px;
+}
+
+.nav-search input, button{
+  margin: 15px;
+  border: none;
+  font-size: 20px;
 }
 
 .searchbar{
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .movie-container{
-  width: 150px;
-  height: 300px;
-  border: 1px solid black;
+  width: 130px;
+  height: 200px;
   margin: 15px;
-  background-color: dimgray;
+  position: relative;
 }
 
 .contain{
@@ -32,10 +45,23 @@
   flex-wrap: wrap;
   
 }
-.movie-container .poster_image{
+ .poster-image{
+  width: 130px;
+  height: 200px;
+}
+
+.content-text{
   width: 150px;
   height: 300px;
+  position: absolute;
+  top: 0%;
+  opacity: 0.5;
+  font-size: 20px;
+  display: none;
 }
+ .movie-container:hover .content-text{
+   display: block;
+ }
 
 h2, h3 , .language ,
 .vote{

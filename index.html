@@ -17,33 +17,40 @@
            scrivere completamente o parzialmente il nome di un film. Possiamo, cliccando il
            bottone, cercare sull’API tutti i film che contengono ciò che ha scritto l’utente.
            Vogliamo dopo la risposta dell’API visualizzare a schermo i seguenti
-           valori per ogni film trovato:
-          1 Titolo
-          2 Titolo Originale
-          3 Lingua
-          4 Voto -->
+           valori per ogni film trovato:-->
+         
       <div id="app" class="container">
+        <header>
+          <!-- inizio search bar -->
+          <nav class="searchbar">
+            <div class="nav-logo">
+              <img src="https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="">
+            </div>
+            <div class="nav-center-filter"></div>
+            <div class="nav-search">
+              <button type="button" @click='search'><i class="fa fa-search" aria-hidden="true"></i>
+              <input v-model='movie' name="search"  @keyup.enter='search' value="">
+              </button>
+            </div>
+          </nav>
+          <!-- fine search bar -->
+        </header>
 
-        <div class="searchbar">
-          <img src="https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="">
-          <input v-model='movie' name="search"  @keyup.enter='search' value="">
-          <button type="button" @click='search'>Search</button>
-        </div>
-
-        <div class="contain">
-
+        <main class="contain">
+           <!-- inizio container film e serie tv  -->
           <div class="movie-container" v-for='movie in resultLauncher'>
-            <!-- <span class="poster_image" style="background-image: url('http://image.tmdb.org/t/p/w500/'+ movie.poster_path)"></span> -->
-            <img class="poster_image" :src="'http://image.tmdb.org/t/p/w500/'+ movie.poster_path" alt="">
-            <h2>{{movie.title}}</h2> <!-- Titolo-->
-            <h3>{{movie.original_title}} {{movie.original_name}}</h3> <!-- Titolo Originale-->
-            <span>  <!-- Voto-->
-              <i class="fa fa-star" v-for='index in vote(movie.vote_average)'></i> 
-              <i class="fa fa-star-o" v-for='index in (5 - vote(movie.vote_average))'></i>
+            <img class="poster-image"  v-if="movie.poster_path" :src="getPoster(movie)" alt="">
+            <img class="poster-image" v-else='' src="./img/poster-null.png" alt="">
+            <span class="content-text"> 
+              <h5>{{movie.original_title}} {{movie.original_name}}</h5>
+              <p>{{movie.overview}}</p> <!-- Titolo Originale-->
+              <i class="fa fa-star" v-for='index in vote(movie.vote_average)'></i> <!-- Voto stelle piene-->
+              <i class="fa fa-star-o" v-for='index in (5 - vote(movie.vote_average))'></i><!-- Voto stelle vuote-->
+              <img class="flag" :src="'./img/' + movie.original_language + '.svg'" alt="">
             </span>
-            <img class="flag" :src="'./img/' + movie.original_language + '.svg'" alt="">
           </div>
-        </div>
+          <!-- fine container film e serie tv -->
+        </main>
         
 
       </div>
