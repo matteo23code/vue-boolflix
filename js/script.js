@@ -52,7 +52,7 @@ new Vue({
     vote:(vote) => {
       return parseInt(vote / 2)
     },
-    getPoster(movie) {
+   /*  getPoster(movie) {
       return `http://image.tmdb.org/t/p/w185${movie.poster_path}`
     },
     searchGenre: function() {
@@ -77,7 +77,7 @@ new Vue({
           console.log(this.searchGenre);
          
       })
-    }
+    } */
   },
 
 });
