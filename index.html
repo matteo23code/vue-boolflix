@@ -26,11 +26,29 @@
             <div class="nav-logo">
               <img src="https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png" alt="">
             </div>
-            <div class="nav-center-filter"></div>
+            <div class="nav-center-filter">
+              <ul>
+                <li>Home</li>
+                <li>Serie Tv</li>
+                <li>
+                  <button type="button" @click='search'>Film</button>
+                </li>
+                <li>La mia lista</li>
+              </ul>
+            </div>
             <div class="nav-search">
               <button type="button" @click='search'><i class="fa fa-search" aria-hidden="true"></i>
-              <input v-model='movie' name="search"  @keyup.enter='search' value="">
               </button>
+              <input v-model='movie' name="search"  @keyup.enter='search' value="">
+
+             <!--  <select v-model="genreList" name='search' @change='searchGenre'>
+                <option value="">All</option>
+                <option value="Comedy">comedy</option>
+                <option value="Horror">horror</option>
+                <option value="Thriller">thriller</option>
+                <option value="Musical">Musical</option>
+              </select> -->
+
             </div>
           </nav>
           <!-- fine search bar -->
@@ -43,7 +61,8 @@
             <img class="poster-image" v-else='' src="./img/poster-null.png" alt="">
             <span class="content-text"> 
               <h5>{{movie.original_title}} {{movie.original_name}}</h5>
-              <p>{{movie.overview}}</p> <!-- Titolo Originale-->
+              <br>
+              <p>Overview: <br>{{movie.overview}}</p> <!-- Titolo Originale-->
               <i class="fa fa-star" v-for='index in vote(movie.vote_average)'></i> <!-- Voto stelle piene-->
               <i class="fa fa-star-o" v-for='index in (5 - vote(movie.vote_average))'></i><!-- Voto stelle vuote-->
               <img class="flag" :src="'./img/' + movie.original_language + '.svg'" alt="">

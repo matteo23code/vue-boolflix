@@ -3,12 +3,12 @@
   padding: 0;
   box-sizing: border-box;
   background: black;
-  color: floralwhite;
+  color: white;
 }
 
 .container{
-  max-width:;
   height: auto;
+ 
 }
 
 .nav-logo img{
@@ -16,16 +16,27 @@
   margin: 15px;
 }
 
-.nav-center-filter{
-  border: 1px solid #fff;
-  width: 300px;
+.nav-center-filter li{
+  margin: 15px;
+  display: inline-block;
 }
 
-.nav-search input, button{
+.nav-center-filter li:hover{
+  color: red;
+}
+
+
+.nav-search input{
+  margin: 15px;
+  border: none;
+}
+
+.nav-search button{
   margin: 15px;
   border: none;
   font-size: 20px;
 }
+
 
 .searchbar{
   width: 100%;
@@ -43,6 +54,7 @@
 .contain{
   display: flex;
   flex-wrap: wrap;
+  overflow-x: auto;
   
 }
  .poster-image{
@@ -52,18 +64,19 @@
 
 .content-text{
   width: 150px;
-  height: 300px;
+  height: 200px;
   position: absolute;
   top: 0%;
-  opacity: 0.5;
-  font-size: 20px;
+  opacity: 0.8;
+  font-size: 18px;
   display: none;
+  overflow-x: auto;
 }
  .movie-container:hover .content-text{
    display: block;
  }
 
-h2, h3 , .language ,
+h2, h3 , .language , p,
 .vote{
   font-size: 20px;
 }

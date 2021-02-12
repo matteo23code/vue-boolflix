@@ -2,6 +2,7 @@ new Vue({
   el: '#app',
   data:{
     movie: '',
+    genreList:'',
      resultLauncher:[
        
      ],
@@ -10,7 +11,7 @@ new Vue({
   },
   methods:{
     search () {
-      this.resultLauncher = [];
+     this.resultLauncher = [];
      this.searchMovie();
      this.searchShowTv();
     },
@@ -53,6 +54,29 @@ new Vue({
     },
     getPoster(movie) {
       return `http://image.tmdb.org/t/p/w185${movie.poster_path}`
+    },
+    searchGenre: function() {
+      this.resultLauncher.forEach((item) => {
+        if (item.genre.includes(this.genreList)) {
+          return item.genre
+        }else {
+
+        }
+      });
+      axios
+      .get('https://api.themoviedb.org/3/genre/movie/list', {  
+        params: {   
+          api_key: '883ce966ab68df0a28febc7e02e61163',
+          query: this.movie,
+          language: 'it_IT',
+        }
+      })
+
+      .then((elem) => {
+          this.searchGenre = elem.data.results;
+          console.log(this.searchGenre);
+         
+      })
     }
   },
 
