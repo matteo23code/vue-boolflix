@@ -18,7 +18,7 @@
            bottone, cercare sull’API tutti i film che contengono ciò che ha scritto l’utente.
            Vogliamo dopo la risposta dell’API visualizzare a schermo i seguenti
            valori per ogni film trovato:-->
-         
+         r
       <div id="app" class="container">
         <header>
           <!-- inizio search bar -->
@@ -41,13 +41,13 @@
               </button>
               <input v-model='movie' name="search"  @keyup.enter='search' value="">
 
-             <!--  <select v-model="genreList" name='search' @change='searchGenre'>
+              <select v-model="movie" name='search' @change='search'>
                 <option value="">All</option>
                 <option value="Comedy">comedy</option>
                 <option value="Horror">horror</option>
                 <option value="Thriller">thriller</option>
                 <option value="Musical">Musical</option>
-              </select> -->
+              </select>
 
             </div>
           </nav>
